@@ -11,6 +11,14 @@ pipeline {
         checkout scm
       }
     }
+    stage('Limpiar e instalar dependencias') {
+        steps {
+            sh 'rm -rf node_modules package-lock.json'
+            sh 'npm cache clean --force'
+            sh 'npm install'
+        }
+    }
+
 
     stage('Instalar dependencias') {
       steps {
