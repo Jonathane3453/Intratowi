@@ -17,14 +17,17 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Preparar vite (fix permisos)') {
-    steps {
-        sh 'chmod +x node_modules/.bin/vite'
-    }
+    stage('Asegurar permisos') {
+        steps {
+            sh '''
+            chmod +x node_modules/.bin/vite
+            ls -l node_modules/.bin/vite
+            '''
+        }
     }
     stage('Build de producción') {
       steps {
-        sh'npx vite build'
+        sh'npm run build'
       }
     }
 
