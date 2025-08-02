@@ -23,10 +23,14 @@ pipeline {
     }
     stage('Forzar instalación de plugin-react') {
         steps {
-            sh 'npm install -D @vitejs/plugin-react'
+            sh 'npm install -g @vitejs/plugin-react'
         }
     }
-
+    stage('Verificar lista de dependencias') {
+        steps {
+            sh 'npm list --depth=0'
+        }
+    }
     stage('Verificar instalación') {
       steps {
         sh 'ls -la node_modules/@vitejs/plugin-react || echo "NO SE INSTALÓ"'
