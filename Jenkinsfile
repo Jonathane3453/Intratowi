@@ -11,12 +11,6 @@ pipeline {
         checkout scm
       }
     }
-    stage('Limpiar workspace (forzado)') {
-        steps {
-            deleteDir()
-       }
-    }
-
 
     stage('Instalación limpia') {
       steps {
@@ -27,26 +21,10 @@ pipeline {
         '''
       }
     }
-    stage('Forzar instalación de plugin-react') {
-        steps {
-            sh 'npm install -g @vitejs/plugin-react'
-        }
-    }
     stage('Verificar lista de dependencias') {
         steps {
             sh 'npm list --depth=0'
         }
-    }
-    stage('Verificar instalación') {
-      steps {
-        sh 'ls -la node_modules/@vitejs/plugin-react || echo "NO SE INSTALÓ"'
-      }
-    }
-
-    stage('Permisos vite') {
-      steps {
-        sh 'chmod +x node_modules/.bin/vite || true'
-      }
     }
 
     stage('Build de producción') {
