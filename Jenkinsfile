@@ -25,6 +25,16 @@ pipeline {
         sh 'npm install'
       }
     }
+     stage('Instalar Tailwind CSS') {
+      steps {
+        sh 'npm install tailwindcss @tailwindcss/vite'
+      }
+    }
+    stage('Instalar React Icons') {
+      steps {
+        sh 'npm install react-icons'
+      }
+    }
     stage('Asegurar permisos') {
         steps {
             sh '''
