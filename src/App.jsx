@@ -1,5 +1,4 @@
 // App.jsx
-import { useState } from "react";
 import EditProfile from "./Components/EditProfile.jsx";
 import Profile from "./Components/Profile.jsx";
 import Header from "./Components/Header.jsx";

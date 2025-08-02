@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { FaTrash ,FaEye} from "react-icons/fa"; // 👈 Importar ícono
+
 
 const FileManager = () => {
   const [files, setFiles] = useState([]);

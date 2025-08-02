@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 
 const EditProfile = ({ setView, currentUser, setCurrentUser }) => {
   const [userData, setUserData] = useState(currentUser);

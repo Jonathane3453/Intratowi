@@ -1,5 +1,4 @@
 import "./Css/Header.css";
-import { FaUser } from "react-icons/fa";
 
 
 const Header = ({ setView }) => {

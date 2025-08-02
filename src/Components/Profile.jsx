@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 
 const Profile = ({ setView, currentUser, setCurrentUser }) => {
   const [loading, setLoading] = useState(!currentUser); // Solo carga si no hay usuario

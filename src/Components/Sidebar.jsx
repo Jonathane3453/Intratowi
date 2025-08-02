@@ -1,5 +1,4 @@
 // src/components/Sidebar.jsx
-import {FaShoppingCart,FaTasks,FaCubes,FaTools,FaRegFilePdf} from "react-icons/fa";
 
 import "./Css/Sidebar.css";
 import towi from "../assets/towi.png";
