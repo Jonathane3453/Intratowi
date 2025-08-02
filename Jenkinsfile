@@ -11,6 +11,12 @@ pipeline {
         checkout scm
       }
     }
+    stage('Limpiar workspace (forzado)') {
+        steps {
+            deleteDir()
+       }
+    }
+
 
     stage('Instalación limpia') {
       steps {
