@@ -11,41 +11,32 @@ pipeline {
         checkout scm
       }
     }
-    stage('Limpiar e instalar dependencias') {
-        steps {
-            sh 'rm -rf node_modules package-lock.json'
-            sh 'npm cache clean --force'
-            sh 'npm install'
-        }
+
+    stage('Instalación limpia') {
+      steps {
+        sh '''
+          rm -rf node_modules package-lock.json
+          npm cache clean --force
+          npm install
+        '''
+      }
     }
 
+    stage('Verificar instalación') {
+      steps {
+        sh 'ls -la node_modules/@vitejs/plugin-react || echo "NO SE INSTALÓ"'
+      }
+    }
 
-    stage('Instalar dependencias') {
+    stage('Permisos vite') {
       steps {
-        sh 'npm install'
+        sh 'chmod +x node_modules/.bin/vite || true'
       }
     }
-     stage('Instalar Tailwind CSS') {
-      steps {
-        sh 'npm install tailwindcss @tailwindcss/vite'
-      }
-    }
-    stage('Instalar React Icons') {
-      steps {
-        sh 'npm install react-icons'
-      }
-    }
-    stage('Asegurar permisos') {
-        steps {
-            sh '''
-            chmod +x node_modules/.bin/vite
-            ls -l node_modules/.bin/vite
-            '''
-        }
-    }
+
     stage('Build de producción') {
       steps {
-        sh'npm run build'
+        sh 'npm run build'
       }
     }
 
@@ -55,7 +46,7 @@ pipeline {
       }
     }
 
-    stage('Despliegue (local o remoto)') {
+    stage('Despliegue') {
       steps {
         sh '''
           docker stop frontend || true
