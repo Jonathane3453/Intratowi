@@ -21,6 +21,11 @@ pipeline {
         '''
       }
     }
+    stage('Forzar instalación de plugin-react') {
+        steps {
+            sh 'npm install -D @vitejs/plugin-react'
+        }
+    }
 
     stage('Verificar instalación') {
       steps {
